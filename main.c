@@ -6,14 +6,11 @@
 char **parse_args(char *line) {
     char ** tokens = malloc(6 * sizeof(line));
     int i = 0;
-    char *l = line;
-    while (l) {
-        tokens[i] = strsep(&l, " ");
+    while (line) {
+        tokens[i] = strsep(&line, " ");
         i++;
     }
-    tokens[i] = NULL;
     return tokens;
-
 }
 
 int main() {
@@ -21,6 +18,5 @@ int main() {
     char *pointer = line;
     char **args = parse_args(line);
     execvp(args[0], args);
-    free(args);
     return 0;
 }
